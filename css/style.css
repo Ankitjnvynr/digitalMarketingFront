@@ -1,0 +1,28 @@
+/* menu bar css for animation/ */
+/* Custom animations for sliding */
+.menu-enter {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.menu-enter-active {
+  max-height: 500px; /* Adjust to a reasonable height */
+  opacity: 1;
+}
+
+.menu-leave {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.menu-leave-active {
+  max-height: 0;
+  opacity: 0;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
