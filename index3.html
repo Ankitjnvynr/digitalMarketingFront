@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+    <style>
+        .scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: rgb(0, 0, 0) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(3px);
+            /* Optional shadow for depth */
+        }
+
+        .scrolled a {
+            color: rgb(70, 70, 70);
+        }
+
+        .swiper {
+            width: 100%;
+            aspect-ratio: 16/6;
+        }
+
+        .swiper-slide-active img,
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            animation: slowZoom 5s forwards;
+        }
+
+        @keyframes slowZoom {
+            from {
+                scale: 1;
+            }
+
+            to {
+                scale: 1.1;
+            }
+        }
+
+        .testimonial {
+            width: 300px;
+            height: 400px;
+        }
+
+        .testimonial .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .testimonial img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 2px 2px 2px;
+        }
+
+        .testimonial .name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .testimonial .text {
+            font-size: 0.875rem;
+            color: wheat;
+            line-height: 1.5;
+            margin: 10px;
+        }
+
+        .testimonial .swiper-slide:nth-child(1n) {
+            background-color: rgb(206, 17, 17);
+        }
+
+        .testimonial .swiper-slide:nth-child(2n) {
+            background-color: rgb(0, 140, 255);
+        }
+
+        .testimonial .swiper-slide:nth-child(3n) {
+            background-color: rgb(10, 184, 111);
+        }
+
+        .testimonial .swiper-slide:nth-child(4n) {
+            background-color: rgb(211, 122, 7);
+        }
+
+        .testimonial .swiper-slide:nth-child(5n) {
+            background-color: rgb(118, 163, 12);
+        }
+
+        .testimonial .swiper-slide:nth-child(6n) {
+            background-color: rgb(180, 10, 47);
+        }
+
+        .testimonial .swiper-slide:nth-child(7n) {
+            background-color: rgb(35, 99, 19);
+        }
+
+        .testimonial .swiper-slide:nth-child(8n) {
+            background-color: rgb(0, 68, 255);
+        }
+
+        .testimonial .swiper-slide:nth-child(9n) {
+            background-color: rgb(218, 12, 218);
+        }
+
+        .testimonial .swiper-slide:nth-child(10n) {
+            background-color: rgb(54, 94, 77);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-30 transition duration-500 ease-in-out  ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-white text-2xl font-bold max-h-5">
+                        <img class="max-h-10" src="imgs/bigbytelogo.png" alt="BigByte Logo">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#"
+                            class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#"
+                            class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="#"
+                            class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#"
+                            class="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button
+                        class="text-white inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                        onclick="toggleNavbar()">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="overflow-hidden max-h-0 opacity-0 md:hidden transition-all duration-300 ease-out">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#"
+                    class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#"
+                    class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                <a href="#"
+                    class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#"
+                    class="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero slider -->
+    <div class="container">
+        <div class="swiper heroslider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="imgs/slider1.avif" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="imgs/slider7.avif" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="imgs/slider4.avif" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="imgs/slider6.avif" alt="">
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+
+    <!-- ------ hero 2---- -->
+    <div class="container my-5">
+        <div class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full lg:w-1/2 md:w-1/2 grid place-content-center">
+                <h2 class="text-6xl font-bold">Bigbyte</h2>
+                <p class="text-5xl m-5">Delivering Quality Software Products and Premium IT Services Since 2013</p>
+            </div>
+            <div class="w-full lg:w-1/2 md:w-1/2">
+                <img src="imgs/hero2.gif" alt="" class="w-full mix-blend-multiply">
+            </div>
+        </div>
+    </div>
+
+    <!-- ------ about company ---- -->
+    <div class="container bg-white my-5">
+        <div class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full lg:w-1/2 md:w-1/2">
+                <img src="imgs/web_d_gif.gif" alt="" class="w-full max-w-[90%] my-5 mix-blend-multiply">
+            </div>
+            <div class="w-full lg:w-1/2 md:w-1/2 grid place-content-center">
+                <h2 class=" font-bold my-2 text-gray-800">OUR COMPANY</h2>
+                <p class="text-5xl font-medium my-2 text-gray-800">Best <span class="text-blue-800">Website Development</span> Company in India</p>
+                <p class="text-2xl my-2 text-gray-800">A company's website is the first impression to its customers and it tells them all about that company.</p>
+                <p class="text-gray-600">To get a functional, updated and competitive business website, you need a business partner that can provide you with the
+                same and has understanding of the industry. BigByte is your one-stop centre for all your needs. We specialize in the
+                development of multifunctional, dynamic and robust business websites using the most advanced technologies.</p>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- Scrolling Social Media Icons -->
+    <div class="container">
+        <div class="w-full overflow-x-scroll overflow-y-hidden" id="scroll-container">
+            <div class="flex gap-6">
+                <!-- Social Media Logos -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
+                    class="h-16">
+                <!-- Add more icons as needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonial Swiper -->
+    <div class="container my-5">
+        <h3 class="h3 text-center text-3xl font-bold my-5">Testimonials</h3>
+        <div class="flex flex-wrap max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full lg:w-1/2 md:w-1/2">
+                <img src="imgs/testimonial.gif" alt="" class="w-full mix-blend-multiply">
+            </div>
+            <div class="w-full lg:w-1/2 md:w-1/2 grid place-content-center">
+                <!-- Swiper -->
+                <div class="swiper testimonial">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="imgs/person1.jpg" alt="Person 1">
+                            <div class="name">John Doe</div>
+                            <div class="text">
+                                "This company provided excellent services and I'm extremely satisfied with the results.
+                                Highly recommended!"
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="imgs/person2.jpg" alt="Person 2">
+                            <div class="name">Jane Smith</div>
+                            <div class="text">
+                                "The team was professional and attentive to all my needs. I would definitely work with
+                                them again."
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="imgs/person3.jpg" alt="Person 3">
+                            <div class="name">Alex Johnson</div>
+                            <div class="text">
+                                "Great experience from start to finish. They delivered on time and exceeded my
+                                expectations."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/script3.js"></script>
+</body>
+
+</html>
