@@ -15,6 +15,9 @@
             backdrop-filter: blur(3px);
             /* Optional shadow for depth */
         }
+        .container{
+            margin: auto;
+        }
 
         .scrolled a {
             color: rgb(70, 70, 70);
@@ -119,6 +122,14 @@
 
         .testimonial .swiper-slide:nth-child(10n) {
             background-color: rgb(54, 94, 77);
+        }
+          /* Make sure to set a height on the container to enable vertical scrolling */
+          .scrolling-wrapper {
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            white-space: nowrap; /* Prevent wrapping of items */
+        }
+        .content {
+            
         }
     </style>
 </head>
@@ -238,14 +249,43 @@
 
     <!-- Scrolling Social Media Icons -->
     <div class="container">
-        <div class="w-full overflow-x-scroll overflow-y-hidden" id="scroll-container">
-            <div class="flex gap-6">
-                <!-- Social Media Logos -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"
-                    class="h-16">
-                <!-- Add more icons as needed -->
+          <!-- Scrolling Content -->
+    <div class="content">
+        <div class="scrolling-wrapper flex space-x-4 py-4">
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4v11H3V10zM7 6h10v15H7V6zM17 5h4v16h-4V5z" />
+                </svg>
             </div>
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 6h14M5 18h14" />
+                </svg>
+            </div>
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4v11H3V10zM7 6h10v15H7V6zM17 5h4v16h-4V5z" />
+                </svg>
+            </div>
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 6h14M5 18h14" />
+                </svg>
+            </div>
+            <div class="flex-shrink-0 w-24 h-24 bg-white shadow-lg rounded-lg flex items-center justify-center">
+                <svg class="w-12 h-12 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+            <!-- Add more logos as needed -->
         </div>
+    </div>
+
     </div>
 
     <!-- Testimonial Swiper -->
@@ -292,6 +332,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="js/script3.js"></script>
+    <script>
+        // JavaScript to sync horizontal scroll with vertical scroll
+        document.addEventListener('scroll', function() {
+            const scrollContainer = document.querySelector('.scrolling-wrapper');
+            const scrollTop = window.scrollY;
+            const scrollWidth = scrollContainer.scrollWidth;
+            const clientWidth = scrollContainer.clientWidth;
+            const maxScrollLeft = scrollWidth - clientWidth;
+
+            // Update horizontal scroll based on vertical scroll
+            scrollContainer.scrollLeft = (scrollTop / (document.body.scrollHeight - window.innerHeight)) * maxScrollLeft;
+        });
+    </script>
 </body>
 
 </html>
